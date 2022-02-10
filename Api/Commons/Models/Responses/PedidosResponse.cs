@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Api.Commons.Models.Dtos
 {
-    public class VPedidosResponse
+    public class PedidosResponse
     {
         public int PedidoId { get; set; }
         public DateTime DataInclusao { get; set; }
         public DateTime DataEntrega { get; set; }
-        public VEnderecoResponse Endereco { get; set; }
+        public EnderecoResponse Endereco { get; set; }
         public List<ProdutoResponse> Produtos { get; set; }
     }
 }

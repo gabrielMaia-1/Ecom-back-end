@@ -16,11 +16,11 @@ namespace Infra.Config
         {
             services.AddDbContext<EntityContext>(options => {
                 options.UseNpgsql(config.GetConnectionString("Default"));
-            });
+            }, ServiceLifetime.Transient);
 
             services.AddTransient(typeof(IRepository<Cidade>), typeof(Repository<Cidade>));
 
-            services.AddTransient<IPedidosRepository, PedidosRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
         }
     }

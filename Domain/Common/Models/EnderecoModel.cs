@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Common.Models
 {
-    public class VEnderecoModel
+    public class EnderecoModel
     {
-        public int? EnderecoId { get; set; }
+        public int EnderecoId { get; set; }
         public string Endereco { get; set; }
-        public int? CidadeId { get; set; }
+        public int CidadeId { get; set; }
         public string Cidade { get; set; }
-        public int? EstadoId { get; set; }
+        public int EstadoId { get; set; }
         public string Estado { get; set; }
         public string Uf { get; set; }
         public string Cep { get; set; }

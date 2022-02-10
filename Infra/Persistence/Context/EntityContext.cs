@@ -26,7 +26,7 @@ namespace Infra.Persistence.Context
         public virtual DbSet<PedidoProduto> PedidoProduto { get; set; }
         public virtual DbSet<Produto> Produto { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<VPedidos> VPedidos { get; set; }
+        public virtual DbSet<VFatoPedidos> VPedidos { get; set; }
         public virtual DbSet<Veiculo> Veiculo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -224,11 +224,11 @@ namespace Infra.Persistence.Context
                     .HasColumnName("username");
             });
 
-            modelBuilder.Entity<VPedidos>(entity =>
+            modelBuilder.Entity<VFatoPedidos>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.ToTable("v_pedidos", "ped");
+                entity.ToTable("v_fato_pedidos", "ped");
 
                 entity.Property(e => e.Cep)
                     .HasMaxLength(8)

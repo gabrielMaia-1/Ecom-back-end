@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Domain.Common.Entities
 {
-    public partial class VPedidos
+    public partial class VFatoPedidos
     {
         public int? PedidoId { get; set; }
         public DateTime? DataInclusao { get; set; }

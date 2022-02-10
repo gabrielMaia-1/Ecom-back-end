@@ -15,11 +15,11 @@ using Xunit;
 
 namespace Test.Controllers
 {
-    public class VPedidosTest
+    public class PedidosTest
     {
         private PedidosController Controller { get; set; }
         private IMapper Mapper { get; set; }
-        public VPedidosTest()
+        public PedidosTest()
         {
             Mapper = ApiMapperBuilder.CreateDefaultMap();
             Controller = new PedidosController();
@@ -31,10 +31,10 @@ namespace Test.Controllers
             // Arrange
             var page = 1;
             var pageSize = 10;
-            var repoMock = new Mock<IPedidosRepository>();
+            var repoMock = new Mock<IPedidoRepository>();
 
-            repoMock.Setup(x => x.PedidosAsync(pageSize, page))
-                .ReturnsAsync(GetVPedidosData());
+            repoMock.Setup(x => x.GetPedidosPaginadoAsync(pageSize, page))
+                .ReturnsAsync((GetVPedidosData(), 40));
 
             // Act
             var response = await Controller.GetAll(repoMock.Object, Mapper, pageSize, page);
@@ -43,11 +43,11 @@ namespace Test.Controllers
             Assert.IsAssignableFrom<OkObjectResult>(response.Result);
         }
 
-        private IEnumerable<VPedidosModel> GetVPedidosData()
+        private IEnumerable<FatoPedidosModel> GetVPedidosData()
         {
             foreach(var vpm in Enumerable.Range(1,40))
             {
-                yield return new VPedidosModel
+                yield return new FatoPedidosModel
                 {
                     PedidoId = vpm,
                     DataInclusao = DateTime.Now,
@@ -58,9 +58,9 @@ namespace Test.Controllers
             }
 
         }
-        private VEnderecoModel GetVEnderecoData()
+        private EnderecoModel GetVEnderecoData()
         {
-            return new VEnderecoModel
+            return new EnderecoModel
             {
                 EnderecoId = 1,
                 EstadoId = 1,

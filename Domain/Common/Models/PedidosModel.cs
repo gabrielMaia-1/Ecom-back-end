@@ -6,12 +6,17 @@ using System.Collections.Generic;
 
 namespace Domain.Common.Models
 {
-    public class VPedidosModel
+    public class FatoPedidosModel
     {
+        public FatoPedidosModel()
+        {   
+            Produtos = new List<Produto>();
+        }
+        
         public int? PedidoId { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataEntrega { get; set; }
-        public VEnderecoModel Endereco { get; set; }
+        public EnderecoModel Endereco { get; set; }
         public List<Produto> Produtos { get; set; }
     }
 }

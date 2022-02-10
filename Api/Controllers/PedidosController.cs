@@ -6,6 +6,7 @@ using Application.Common.Interfaces.Repositories;
 using AutoMapper;
 using System.Collections.Generic;
 using Api.Commons.Models.Dtos;
+using Domain.Common.Models;
 
 namespace Api.Controllers
 {
@@ -14,14 +15,43 @@ namespace Api.Controllers
     public class PedidosController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<VPedidosResponse>>>
-            GetAll( [FromServices] IPedidosRepository repo,
+        public async Task<ActionResult<IEnumerable<PedidosResponse>>>
+            GetAll( [FromServices] IPedidoRepository repo,
                                                 [FromServices] IMapper mapper,
-                                                [FromQuery(Name = "pageSize")] int pageSize = 20,
+                                                [FromQuery(Name = "pageSize")] int pageSize = 10,
                                                 [FromQuery(Name = "page")] int page = 1)
         {
-            return Ok(mapper.Map<IEnumerable<VPedidosResponse>>(await repo.PedidosAsync(pageSize, page)));
+            var pedidos = await repo.GetPedidosPaginadoAsync(page, pageSize);
+            var res = new PedidosPagedResponse
+            {
+                Count = pedidos.Count,
+                Pedidos = mapper.Map<IEnumerable<PedidosResponse>>(pedidos.Pedidos)
+            };
+
+            return Ok(res);
         }
 
+        [HttpGet("ticketMedio/data")]
+        public async Task<ActionResult<IEnumerable<TicketMedioData>>>
+            GetTicketMedData([FromServices] IPedidoRepository repo,
+                            [FromServices] IMapper mapper)
+        {
+         return Ok(await repo.GetTicketMedData());   
+        }
+        [HttpGet("ticketMedio/cidade")]
+        public async Task<ActionResult<IEnumerable<TicketMedioData>>>
+            GetTicketMedCidade([FromServices] IPedidoRepository repo,
+                            [FromServices] IMapper mapper)
+        {
+         return Ok(await repo.GetTicketMedCidade());   
+        }
+
+        [HttpGet("rankProdutos")]
+        public async Task<ActionResult<IEnumerable<TicketMedioData>>>
+            GetrankProdutos([FromServices] IPedidoRepository repo,
+                            [FromServices] IMapper mapper)
+        {
+         return Ok(await repo.GetRankProduto());   
+        }
     }
 }

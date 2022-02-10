@@ -14,8 +14,8 @@ namespace Api.Commons.Mappings
     {
         public ApiMapper()
         {
-            CreateMap<VPedidosModel, VPedidosResponse>();
-            CreateMap<VEnderecoModel, VEnderecoResponse>();
+            CreateMap<FatoPedidosModel, PedidosResponse>();
+            CreateMap<EnderecoModel, EnderecoResponse>();
             CreateMap<Produto, ProdutoResponse>();
         }
     }

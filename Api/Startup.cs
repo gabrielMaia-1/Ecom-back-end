@@ -24,6 +24,7 @@ using Application.Config;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Api.Commons.Mappings;
+using Api.Config;
 
 namespace Api
 {
@@ -72,6 +73,10 @@ namespace Api
             }
             
             app.UseRouting();
+
+            app.UseApiCors();
+
+            app.UseApiMiddlewares();
 
             app.UseAuthentication();
 
