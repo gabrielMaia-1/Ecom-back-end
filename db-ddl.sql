@@ -92,7 +92,7 @@ CREATE TABLE ped.pedido_produto (
 
 -- Outros
 
-CREATE OR REPLACE VIEW ped.v_pedidos
+CREATE OR REPLACE VIEW ped.v_fato_pedidos
 AS SELECT p.id AS pedido_id,
     p.data_inclusao,
     p.data_entrega,

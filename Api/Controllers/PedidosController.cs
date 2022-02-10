@@ -36,22 +36,22 @@ namespace Api.Controllers
             GetTicketMedData([FromServices] IPedidoRepository repo,
                             [FromServices] IMapper mapper)
         {
-         return Ok(await repo.GetTicketMedData());   
+         return Ok(mapper.Map<TicketMedioDataResponse[]>(await repo.GetTicketMedData()));   
         }
         [HttpGet("ticketMedio/cidade")]
-        public async Task<ActionResult<IEnumerable<TicketMedioData>>>
+        public async Task<ActionResult<IEnumerable<TicketMedioCidade>>>
             GetTicketMedCidade([FromServices] IPedidoRepository repo,
                             [FromServices] IMapper mapper)
         {
-         return Ok(await repo.GetTicketMedCidade());   
+         return Ok(mapper.Map<TicketMedioCidadeResponse[]>(await repo.GetTicketMedCidade()));   
         }
 
         [HttpGet("rankProdutos")]
-        public async Task<ActionResult<IEnumerable<TicketMedioData>>>
+        public async Task<ActionResult<IEnumerable<RankProduto>>>
             GetrankProdutos([FromServices] IPedidoRepository repo,
                             [FromServices] IMapper mapper)
         {
-         return Ok(await repo.GetRankProduto());   
+         return Ok(mapper.Map<RankProdutoResponse[]>(await repo.GetRankProduto()));   
         }
     }
 }

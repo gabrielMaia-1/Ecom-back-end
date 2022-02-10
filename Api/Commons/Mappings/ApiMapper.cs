@@ -17,6 +17,9 @@ namespace Api.Commons.Mappings
             CreateMap<FatoPedidosModel, PedidosResponse>();
             CreateMap<EnderecoModel, EnderecoResponse>();
             CreateMap<Produto, ProdutoResponse>();
+            CreateMap<RankProduto, RankProdutoResponse>();
+            CreateMap<TicketMedioCidade, TicketMedioCidadeResponse>();
+            CreateMap<TicketMedioData, TicketMedioDataResponse>();
         }
     }
 }
